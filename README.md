@@ -3,15 +3,20 @@ This project contains a minimal example for setting up ROS 2 Humble on the Kobuk
 For a comprehensive guide, see [idorobotics.com](https://idorobotics.com/2024/02/20/ros2-on-kobuki-turtlebot/).
 ## Setup
 To setup the TurtleBot 2 mobile robot base:
-- Install the velocity smoother and sophus packages:
-```sudo apt-get install ros-humble-kobuki-velocity-smoother ros-humble-sophus```
+- Update udev rules
+```wget https://raw.githubusercontent.com/kobuki-base/kobuki_ftdi/devel/60-kobuki.rules```
+```sudo cp 60-kobuki.rules /etc/udev/rules.d```
+```sudo service udev reload```
+```sudo service udev restart```
+- Install the velocity smoother:
+```sudo apt-get install ros-humble-kobuki-velocity-smoother```
 - In a ROS 2 workspace, clone this repository (which adds the kobuki_core, kobuki_ros, kobuki_ros_interfaces, cmd_vel_mux, ecl_core and ecl_lite packages):
-```git clone https://github.com/idorobotics/turtlebot2_ros2.git```
+```git clone https://github.com/uf-reef-avl/turtlebot2_ros2.git```
 - Install any missing depencies:
 ```rosdep install -i --from-path src --rosdistro humble -y```
 - Build the workspace
-```colcon build --symlink-install --executor sequential```
-- Update udev rules, check version information and run the kobuki-simple-keyop test noted in the [official guide](https://kobuki.readthedocs.io/en/release-1.0.x/software.html).
+```colcon build --symlink-install --executor sequential --cmake-args -Wno-dev```
+- Check version information and run the kobuki-simple-keyop test noted in the [official guide](https://kobuki.readthedocs.io/en/release-1.0.x/software.html).
  ## Testing
  To test this setup, run remote teleoperation to control (drive around) the robot from a workstation (laptop) computer following the steps below:
  - Install the teleop packages:
