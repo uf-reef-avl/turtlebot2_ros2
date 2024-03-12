@@ -16,3 +16,6 @@
 [submodule "ecl_lite"]
 	path = ecl_lite
 	url = https://github.com/stonier/ecl_lite.git
+[submodule "sophus"]
+	path = sophus
+	url = https://github.com/clalancette/sophus.git
