@@ -1,4 +1,5 @@
 cwd=$(pwd)
+git submodule update --init --recursive
 cd ~/
 wget https://raw.githubusercontent.com/kobuki-base/kobuki_ftdi/devel/60-kobuki.rules
 sudo cp 60-kobuki.rules /etc/udev/rules.d

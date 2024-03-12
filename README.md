@@ -14,6 +14,11 @@ sudo service udev restart
 ```sudo apt-get install ros-humble-kobuki-velocity-smoother```
 - In a ROS 2 workspace, clone this repository (which adds the kobuki_core, kobuki_ros, kobuki_ros_interfaces, cmd_vel_mux, ecl_core and ecl_lite packages):
 ```git clone https://github.com/uf-reef-avl/turtlebot2_ros2.git```
+- Change directory into the repository you just cloned and update the submodules
+```
+cd turtlebot2_ros2
+git submodule update --init --recursive
+```
 - Install any missing dependencies:
 ```rosdep install -i --from-path src --rosdistro humble -y```
 - Build the workspace
