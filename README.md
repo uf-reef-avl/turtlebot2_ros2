@@ -4,15 +4,17 @@ For a comprehensive guide, see [idorobotics.com](https://idorobotics.com/2024/02
 ## Setup
 To setup the TurtleBot 2 mobile robot base:
 - Update udev rules
-```wget https://raw.githubusercontent.com/kobuki-base/kobuki_ftdi/devel/60-kobuki.rules```
-```sudo cp 60-kobuki.rules /etc/udev/rules.d```
-```sudo service udev reload```
-```sudo service udev restart```
+```
+wget https://raw.githubusercontent.com/kobuki-base/kobuki_ftdi/devel/60-kobuki.rules
+sudo cp 60-kobuki.rules /etc/udev/rules.d
+sudo service udev reload
+sudo service udev restart
+```
 - Install the velocity smoother:
 ```sudo apt-get install ros-humble-kobuki-velocity-smoother```
 - In a ROS 2 workspace, clone this repository (which adds the kobuki_core, kobuki_ros, kobuki_ros_interfaces, cmd_vel_mux, ecl_core and ecl_lite packages):
 ```git clone https://github.com/uf-reef-avl/turtlebot2_ros2.git```
-- Install any missing depencies:
+- Install any missing dependencies:
 ```rosdep install -i --from-path src --rosdistro humble -y```
 - Build the workspace
 ```colcon build --symlink-install --executor sequential --cmake-args -Wno-dev```
